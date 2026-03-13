@@ -1,0 +1,283 @@
+/* src/pages/Dashboard.css */
+
+.dashboard-container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.welcome-banner {
+    background-color: #6BCB77;
+    color: white;
+    border-radius: 16px;
+    padding: 35px 40px;
+    box-shadow: 0 10px 25px rgba(107, 203, 119, 0.2);
+    margin-bottom: 30px;
+}
+
+.welcome-banner h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.welcome-banner p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.section-header-dash {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.section-header-dash h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.section-header-dash p {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+.dash-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-add-dash {
+    border: 1px solid #6BCB77;
+    color: #6BCB77;
+    background: transparent;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-add-dash:hover {
+    background: #f0fdf4;
+}
+
+.dash-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.dash-arrows button {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: white;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dash-arrows button:hover {
+    border-color: #6BCB77;
+    color: #6BCB77;
+}
+
+/* === CARDS DO DASHBOARD (IDÊNTICO À FOTO 1) === */
+.dash-meals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.dash-meal-card {
+    background-color: #eefdf2;
+    /* Fundo verde super clarinho */
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+}
+
+.dash-meal-card:hover {
+    box-shadow: 0 8px 25px rgba(107, 203, 119, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Título Verde Escuro */
+.dash-meal-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #064e3b;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.3px;
+}
+
+/* Tags tipo "pílula" com fundo branco e borda cinza */
+.dash-meal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.meal-tag {
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meal-tag i {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+/* Caixa de Observação Laranja com a Borda Grossa */
+.dash-meal-obs {
+    background-color: #fff7ed;
+    border-left: 5px solid #f97316;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ea580c;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.dash-meal-obs i {
+    font-size: 1.1rem;
+}
+
+/* Rodapé com a Linha Verde Clara Divisória */
+.dash-meal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #dcfce7;
+}
+
+.dash-meal-footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-time {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.footer-day {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #16a34a;
+    letter-spacing: -0.5px;
+}
+
+.dash-meal-footer i {
+    color: #86efac;
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.empty-dash-box {
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    color: #888;
+    font-size: 0.95rem;
+    grid-column: 1 / -1;
+}
+
+/* Widgets */
+.widget-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    margin-bottom: 25px;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.widget-header h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+}
+
+.widget-select {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    color: #666;
+    outline: none;
+    background: white;
+}
+
+.widget-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.w-filter-btn {
+    border: 1px solid #eee;
+    background: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #666;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.w-filter-btn.active {
+    background: #E8F5E9;
+    border-color: #6BCB77;
+    color: #2E7D32;
+    font-weight: 600;
+}
+
+.w-filter-btn:hover:not(.active) {
+    background: #f9f9f9;
+}

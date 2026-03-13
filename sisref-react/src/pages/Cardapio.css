@@ -1,0 +1,434 @@
+/* src/pages/Cardapio.css */
+
+.page-header-cardapio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 25px;
+}
+
+.page-header-cardapio h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-breadcrumb-extra {
+    color: #888;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.page-header-cardapio .subtitle {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+    margin: 5px 0 0 0;
+}
+
+.header-actions-cardapio {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Botões Superiores */
+.btn-outline-red {
+    border: 1px solid #E74C3C;
+    color: #E74C3C;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-outline-red:hover {
+    background: #FFEBEE;
+}
+
+.btn-add-green {
+    border: 1px solid #6BCB77;
+    color: #6BCB77;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-add-green:hover {
+    background: #f0fdf4;
+}
+
+.btn-select-all {
+    border: 1px solid #ccc;
+    color: #666;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-select-all:hover {
+    background: #f5f5f5;
+}
+
+.btn-cancel-mode {
+    border: 1px solid #6BCB77;
+    color: #6BCB77;
+    background: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cancel-mode:hover {
+    background: #f0fdf4;
+}
+
+.btn-confirm-delete {
+    background: #E74C3C;
+    border: 1px solid #E74C3C;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-confirm-delete:hover {
+    background: #C62828;
+}
+
+.btn-confirm-delete:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-arrows button {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    transition: 0.2s;
+}
+
+.nav-arrows button:hover {
+    border-color: #6BCB77;
+    color: #6BCB77;
+}
+
+/* === O KANBAN === */
+.kanban-board-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 25px;
+    overflow-x: auto;
+}
+
+.kanban-board {
+    display: flex;
+    min-width: 1100px;
+    gap: 0;
+}
+
+.kanban-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-right: 1px solid #eee;
+    padding: 0 15px;
+}
+
+.kanban-column:last-child {
+    border-right: none;
+}
+
+.column-title {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.meal-item-card {
+    background: #f4fdf8;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #dcfce7;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+    position: relative;
+}
+
+.meal-item-card:hover {
+    box-shadow: 0 4px 10px rgba(107, 203, 119, 0.15);
+    transform: translateY(-2px);
+}
+
+.meal-item-card.selectable {
+    cursor: pointer;
+    padding-bottom: 25px;
+}
+
+.meal-item-card.selected-for-delete {
+    background-color: #FFF0F0;
+    border-color: #FFCDD2;
+}
+
+.meal-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.meal-item-time {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #22c55e;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.meal-item-actions {
+    display: flex;
+    gap: 1px;
+}
+
+.meal-item-actions i {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.meal-item-actions i:hover {
+    color: #22c55e;
+}
+
+.meal-item-prato {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #14532d;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.meal-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meal-item-tag-simple {
+    font-size: 0.8rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meal-item-tag-simple i {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.meal-item-obs {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #fed7aa;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.checkbox-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background: white;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.meal-item-card.selected-for-delete .checkbox-circle {
+    background-color: #E74C3C;
+    border-color: #E74C3C;
+    color: white;
+}
+
+/* Modais */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-card {
+    background: white;
+    padding: 40px 30px 30px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: pop 0.3s;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-close-corner {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #999;
+    transition: 0.2s;
+}
+
+.modal-close-corner:hover {
+    color: #333;
+}
+
+.delete-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background-color: #FFEBEE;
+    color: #E74C3C;
+    border: 4px solid #FFCDD2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px auto;
+}
+
+.modal-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.modal-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.modal-card p strong {
+    color: #333;
+}
+
+.modal-actions-custom {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-cancel-custom {
+    background: white;
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cancel-custom:hover {
+    background: #f5f5f5;
+    border-color: #bbb;
+}
+
+.btn-delete-custom {
+    background: #C62828;
+    border: 1px solid #C62828;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-delete-custom:hover {
+    background: #b71c1c;
+}

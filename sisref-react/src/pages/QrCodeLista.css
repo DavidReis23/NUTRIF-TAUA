@@ -1,0 +1,222 @@
+/* src/pages/QrCodeLista.css */
+.qr-lista-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 30px;
+}
+
+.alert-box {
+    background-color: #FFF8E1;
+    border: 1px solid #FFE082;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.alert-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.alert-content i {
+    color: #F57F17;
+    font-size: 1.4rem;
+    margin-top: 2px;
+}
+
+.alert-text h4 {
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0 0 3px 0;
+}
+
+.alert-text p {
+    color: #666;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.alert-limit {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.qr-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.qr-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-tabs {
+    display: flex;
+    background: #f5f5f5;
+    border-radius: 30px;
+    padding: 4px;
+    gap: 5px;
+}
+
+.tab-pill {
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #888;
+    transition: 0.3s;
+    background: transparent;
+    border: none;
+}
+
+.tab-pill:hover {
+    color: #333;
+}
+
+.tab-pill.active-todos {
+    background: #FFF9C4;
+    color: #F57F17;
+    box-shadow: 0 2px 5px rgba(245, 127, 23, 0.15);
+}
+
+.tab-pill.active-compareceram {
+    background: #E8F5E9;
+    color: #2E7D32;
+    box-shadow: 0 2px 5px rgba(46, 125, 50, 0.15);
+}
+
+.tab-pill.active-naocompareceram {
+    background: #FFEBEE;
+    color: #C62828;
+    box-shadow: 0 2px 5px rgba(198, 40, 40, 0.15);
+}
+
+.data-table.qr-table th {
+    background-color: #f8f9fa;
+    color: #6BCB77;
+    font-weight: 600;
+}
+
+.qr-table td {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    color: #555;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.status-compareceu {
+    color: #2E7D32;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+}
+
+.status-nao-compareceu {
+    color: #C62828;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+}
+
+.status-aguardando {
+    color: #aaa;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.action-buttons-qr {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-qr-action {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    color: #ccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.btn-qr-action.check:hover {
+    border-color: #6BCB77;
+    color: #6BCB77;
+    background: #f4fdf8;
+}
+
+.btn-qr-action.cross:hover {
+    border-color: #E74C3C;
+    color: #E74C3C;
+    background: #FFEBEE;
+}
+
+.footer-info {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* O Botão A-Z */
+.btn-sort {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.2s;
+}
+
+.btn-sort:hover {
+    border-color: #6BCB77;
+    color: #6BCB77;
+}
+
+.btn-sort.active-sort {
+    border-color: #6BCB77;
+    color: #6BCB77;
+    background-color: #f0fdf4;
+}
+
+.label-sort {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+    margin-right: 5px;
+}

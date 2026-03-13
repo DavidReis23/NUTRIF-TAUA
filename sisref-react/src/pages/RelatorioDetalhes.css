@@ -1,0 +1,377 @@
+/* src/pages/RelatorioDetalhes.css */
+
+.relatorio-detalhe-container {
+    padding: 20px 0;
+}
+
+.header-voltar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.title-area-voltar {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.btn-voltar-icon {
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 4px;
+}
+
+.btn-voltar-icon:hover {
+    color: #6BCB77;
+    transform: translateX(-3px);
+}
+
+.header-voltar h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.header-voltar .subtitle {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+    margin: 5px 0 0 0;
+}
+
+.btn-exportar-topo {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-exportar-topo:hover {
+    background: #f8fafc;
+    color: #333;
+}
+
+/* Toggle Semanal/Mensal (Idêntico ao Dashboard) */
+.toggle-periodo {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 30px;
+    display: flex;
+    padding: 4px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.toggle-btn.active {
+    background: white;
+    color: #22c55e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Abas de Navegação (Semanas e Meses) */
+.nav-abas-presenca {
+    display: flex;
+    gap: 40px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 25px;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.aba-presenca {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.2s;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+
+.aba-presenca:hover {
+    color: #94a3b8;
+}
+
+.aba-presenca.active {
+    color: #22c55e;
+}
+
+.aba-presenca.active::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #22c55e;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Tabela de Relatórios */
+.tabela-relatorio-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 30px;
+}
+
+/* Toolbar (Filtros, Busca e Paginação) */
+.toolbar-relatorio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-sort-rel {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #22c55e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.search-box-rel {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0 15px;
+    width: 350px;
+    height: 40px;
+}
+
+.search-box-rel i {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.search-box-rel input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Filtros Tipo Pílula (Auditoria) */
+.status-filters {
+    display: flex;
+    gap: 5px;
+    background: #f8fafc;
+    padding: 4px;
+    border-radius: 30px;
+}
+
+.filter-pill {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-pill.active {
+    background: white;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.filter-pill.active-verde {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.filter-pill.active-vermelho {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.filter-pill.active-azul {
+    background: #eff6ff;
+    color: #3b82f6;
+}
+
+/* Tabela Design Limpo */
+.table-rel {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-rel th {
+    color: #86efac;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 15px 10px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    letter-spacing: 0.5px;
+}
+
+.table-rel th:nth-child(2) {
+    text-align: left;
+}
+
+.table-rel td {
+    padding: 18px 10px;
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    border-bottom: 1px solid #f9f9f9;
+    font-weight: 500;
+}
+
+.table-rel td:nth-child(2) {
+    text-align: left;
+    font-weight: 700;
+    color: #333;
+}
+
+.table-rel td.idx {
+    color: #cbd5e1;
+    font-weight: 700;
+}
+
+.table-rel td.italic {
+    font-style: italic;
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* Badges da Auditoria */
+.badge-audit {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid transparent;
+}
+
+.badge-audit.desbloq {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border-color: #bbf7d0;
+}
+
+.badge-audit.bloq {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border-color: #fecaca;
+}
+
+.badge-audit.retirada {
+    background-color: #eff6ff;
+    color: #3b82f6;
+    border-color: #bfdbfe;
+}
+
+/* Textos da Presença */
+.txt-compareceu {
+    color: #22c55e;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.txt-falta {
+    color: #ef4444;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.footer-relatorio {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-left: 10px;
+}
+
+/* Titulo interno da Presença */
+.header-tabela-presenca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-tabela-presenca h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-tabela-presenca h3 i {
+    color: #22c55e;
+    font-size: 1.3rem;
+}

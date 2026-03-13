@@ -1,0 +1,397 @@
+/* src/pages/QrCode.css */
+
+.page-header-qr {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.page-header-qr h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.page-header-qr .subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 400;
+    margin: 2px 0 0 0;
+}
+
+.btn-liberar-leitura {
+    background: white;
+    border: 1px solid #6BCB77;
+    color: #6BCB77;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-liberar-leitura:hover {
+    background: #f0fdf4;
+}
+
+/* Abas */
+.days-tabs {
+    display: flex;
+    gap: 30px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+
+.day-tab {
+    padding: 8px 0;
+    font-weight: 500;
+    color: #aaa;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.day-tab:hover {
+    color: #6BCB77;
+}
+
+.day-tab.active {
+    color: #6BCB77;
+    font-weight: 600;
+}
+
+.day-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #6BCB77;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Grid Layout */
+.qr-dashboard-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.mobile-reader-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-icon-box {
+    background: #f4fdf8;
+    color: #6BCB77;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.mobile-reader-card h3 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.mobile-reader-card p {
+    color: #888;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.btn-scanner-app {
+    background: #111;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-scanner-app:hover {
+    background: #333;
+}
+
+.btn-scanner-app .scan-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-scanner-app .scan-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.btn-scanner-app .scan-sub {
+    font-size: 0.65rem;
+    color: #aaa;
+}
+
+.help-link {
+    margin-top: 15px;
+    color: #6BCB77;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.help-link:hover {
+    text-decoration: underline;
+}
+
+.meals-area-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.meals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.meal-action-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border-left: 5px solid #6BCB77;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.2s;
+    min-height: 160px;
+}
+
+.meal-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.meal-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.meal-time-badge {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.meal-card-top i {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.meal-action-card h4 {
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 3px 0;
+}
+
+.meal-desc {
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    min-height: 35px;
+    line-height: 1.3;
+}
+
+.meal-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+    margin-top: auto;
+}
+
+.meal-confirmed {
+    font-size: 0.75rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.btn-abrir-chamada {
+    background: transparent;
+    border: none;
+    color: #6BCB77;
+    font-weight: 700;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-abrir-chamada:hover {
+    color: #14532d;
+}
+
+.empty-qr-box {
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    color: #888;
+    font-size: 0.95rem;
+    grid-column: 1 / -1;
+}
+
+/* Modal Restrito */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.restricted-modal-card {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 40px 40px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+    animation: pop 0.3s;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.restricted-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.restricted-close:hover {
+    background: #eee;
+    color: #333;
+}
+
+.restricted-icon-circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid #ffedd5;
+    background: #fff7ed;
+    color: #f97316;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.restricted-modal-card h3 {
+    font-size: 1.4rem;
+    color: #111;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.restricted-modal-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.restricted-modal-card p strong {
+    color: #333;
+}
+
+.btn-restricted-back {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #f5f5f5;
+    color: #555;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-restricted-back:hover {
+    background: #eaeaea;
+    color: #333;
+}
