@@ -1,0 +1,69 @@
+.sidebar-container {
+    width: 260px;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    border-right: 1px solid #f0f0f0;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.sidebar-item i {
+    font-size: 1.3rem;
+}
+
+.sidebar-item:hover {
+    background-color: #f8fafc;
+    color: #22c55e;
+}
+
+/* Botão verde quando a página está ativa */
+.sidebar-item.active {
+    background-color: #6BCB77;
+    color: white;
+}
+
+/* Botão de Sair */
+.btn-sidebar-sair {
+    background: white;
+    border: 1px solid #fecaca;
+    color: #ef4444;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.btn-sidebar-sair:hover {
+    background: #fef2f2;
+}

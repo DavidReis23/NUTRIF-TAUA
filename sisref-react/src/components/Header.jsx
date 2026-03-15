@@ -1,23 +1,40 @@
+// src/components/Header.jsx
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Header.css";
+
 export default function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("usuario_logado");
+    navigate("/login");
+  };
+
   return (
-    <header className="top-header">
-      <div className="logo-area">
-        <h2>NUTRIF-TAUÁ</h2>
-      </div>
-      <div className="header-items">
-        <button className="icon-circle">
+    <header className="header-container">
+      <h1 className="header-logo">NUTRIF-TAUÁ</h1>
+
+      <div className="header-right-actions">
+        {/* Ícone de Sair */}
+        <button
+          className="icon-btn-header"
+          title="Sair do sistema"
+          onClick={handleLogout}
+        >
           <i className="ph ph-sign-out"></i>
         </button>
-        <button className="icon-circle notification">
+
+        {/* Ícone de Notificações */}
+        <button className="icon-btn-header">
           <i className="ph ph-bell"></i>
-          <span className="badge">1</span>
+          <span className="badge-notification">2</span>
         </button>
-        <div className="profile-pill">
-          <img
-            src="https://ui-avatars.com/api/?name=Nutricionista&background=16A085&color=fff"
-            alt="User"
-          />
-          <span>Nutricionista</span>
+
+        {/* Perfil Nutricionista */}
+        <div className="profile-badge">
+          <div className="profile-avatar">NU</div>
+          <span className="profile-name">Nutricionista</span>
         </div>
       </div>
     </header>

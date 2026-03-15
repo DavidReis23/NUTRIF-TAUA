@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
+}
+
+/* O container que segura o Menu Lateral e o Conteúdo lado a lado */
+.app-container {
+    display: flex;
+    height: calc(100vh - 80px);
+    /* Ocupa a tela inteira menos o tamanho do Header */
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Onde as telas (Dashboard, Cardápio, etc) aparecem */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: #f8fafc;
+}

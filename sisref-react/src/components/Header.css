@@ -1,0 +1,91 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #8B0000;
+    /* Vermelho escuro do seu Figma */
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-btn-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #64748b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+}
+
+.icon-btn-header:hover {
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+.badge-notification {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #ef4444;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Crachá Nutricionista */
+.profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0fdf4;
+    padding: 5px 15px 5px 5px;
+    border-radius: 30px;
+    border: 1px solid #dcfce7;
+}
+
+.profile-avatar {
+    width: 32px;
+    height: 32px;
+    background: #16a34a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.profile-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #14532d;
+}
