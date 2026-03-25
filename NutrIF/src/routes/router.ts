@@ -1,10 +1,6 @@
-// src/router.tsx
-import { createBrowserRouter, Navigate, useNavigate } from "react-router-dom";
-import { JSX } from "react";
+import App from "../App"; // layout do sistema interno
+import PublicLayout from "../layouts/PublicLayout"; // layout simples sem sidebar
 
-import App from "../App";
-
-// páginas
 import Login from "../pages/pageLogin/Login";
 import Dashboard from "../pages/pageNutri/Dashboard";
 import Cardapio from "../pages/pageNutri/Cardapio";
@@ -21,18 +17,28 @@ import RelatorioAuditoria from "../pages/pageNutri/RelatorioAuditoria";
 import RelatorioPresenca from "../pages/pageNutri/RelatorioPresenca";
 import Notificacoes from "../pages/pageNutri/Notificacoes";
 
-// Criar um contexto authProvider para o UsuarioLogado (Critico)
+import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
+  // rotas públicas
   {
-    path: "/login",
-    Component: Login,
+    Component: PublicLayout,
+    children: [
+      {
+        path: "/",
+        Component: Login,
+      },
+    ],
   },
+
+  // rotas protegidas (sistema)
   {
-    path: "/",
     Component: App,
     children: [
-      { index: true, Component: Dashboard },
+      {
+        path: "dashboard",
+        Component: Dashboard,
+      },
 
       { path: "cardapio", Component: Cardapio },
       { path: "cardapio/adicionar", Component: AddCardapio },
