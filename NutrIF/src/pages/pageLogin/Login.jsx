@@ -36,7 +36,7 @@ export default function Login() {
       setLoginErrors(erros);
     } else {
       localStorage.setItem("usuario_logado", "true");
-      navigate("/");
+      navigate("/home");
     }
   };
 

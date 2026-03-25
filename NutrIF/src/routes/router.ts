@@ -1,10 +1,8 @@
 // src/router.tsx
-import { createBrowserRouter, Navigate, useNavigate } from "react-router-dom";
-import { JSX } from "react";
-
+import { createBrowserRouter, Navigate} from "react-router-dom";
 import App from "../App";
 
-// páginas
+// Vamos refatorar essas rotas colocando as subrotas dentro das funcões das rotas principais
 import Login from "../pages/pageLogin/Login";
 import Dashboard from "../pages/pageNutri/Dashboard";
 import Cardapio from "../pages/pageNutri/Cardapio";
@@ -28,8 +26,9 @@ export const router = createBrowserRouter([
     path: "/login",
     Component: Login,
   },
+
   {
-    path: "/",
+    path: "/dashboard",
     Component: App,
     children: [
       { index: true, Component: Dashboard },
