@@ -4,7 +4,7 @@ import { JSX } from "react";
 
 import App from "../App";
 
-// páginas
+// páginas nutricionista
 import Login from "../pages/pageLogin/Login";
 import Dashboard from "../pages/pageNutri/Dashboard";
 import Cardapio from "../pages/pageNutri/Cardapio";
@@ -20,6 +20,9 @@ import Relatorios from "../pages/pageNutri/Relatorios";
 import RelatorioAuditoria from "../pages/pageNutri/RelatorioAuditoria";
 import RelatorioPresenca from "../pages/pageNutri/RelatorioPresenca";
 import Notificacoes from "../pages/pageNutri/Notificacoes";
+
+// páginas Aluno
+import HomeAluno from "../pages/pageAlunos/Home";
 
 // Criar um contexto authProvider para o UsuarioLogado (Critico)
 
