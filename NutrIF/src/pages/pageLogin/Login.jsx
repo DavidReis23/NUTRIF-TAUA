@@ -280,7 +280,7 @@ export default function Login() {
           </div>
         );
 
-      case "reset":
+      case "reset": {
         const tem8Char = novaSenha.length >= 8;
         const temNumero = /\d/.test(novaSenha);
         const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(novaSenha);
@@ -404,6 +404,7 @@ export default function Login() {
             </div>
           </div>
         );
+      }
 
       default:
         return null;
