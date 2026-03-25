@@ -1,11 +1,5 @@
-// src/router.tsx
-import { createBrowserRouter, Navigate} from "react-router-dom";
-// páginas nutricionista
-// Vamos refatorar essas rotas colocando as subrotas dentro das funcões das rotas principais
-
 import App from "../App"; // layout do sistema interno
 import PublicLayout from "../layouts/PublicLayout"; // layout simples sem sidebar
-import HomeAluno from "../pages/pageAlunos/Home";
 
 import Login from "../pages/pageLogin/Login";
 import Dashboard from "../pages/pageNutri/Dashboard";
@@ -23,20 +17,28 @@ import RelatorioAuditoria from "../pages/pageNutri/RelatorioAuditoria";
 import RelatorioPresenca from "../pages/pageNutri/RelatorioPresenca";
 import Notificacoes from "../pages/pageNutri/Notificacoes";
 
-
-// Criar um contexto authProvider para o UsuarioLogado (Critico)
+import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
+  // rotas públicas
   {
-    path: "/login",
-    Component: Login,
+    Component: PublicLayout,
+    children: [
+      {
+        path: "/",
+        Component: Login,
+      },
+    ],
   },
 
+  // rotas protegidas (sistema)
   {
-    path: "/dashboard",
     Component: App,
     children: [
-      { index: true, Component: Dashboard },
+      {
+        path: "dashboard",
+        Component: Dashboard,
+      },
 
       { path: "cardapio", Component: Cardapio },
       { path: "cardapio/adicionar", Component: AddCardapio },
