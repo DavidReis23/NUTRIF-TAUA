@@ -1,4 +1,4 @@
-import App from "../App"; // layout do sistema interno
+import AppLayout from "../layouts/AppLayout"; // layout do sistema interno
 import PublicLayout from "../layouts/PublicLayout"; // layout simples sem sidebar
 
 import Login from "../pages/pageLogin/Login";
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
 
   // rotas protegidas (sistema)
   {
-    Component: App,
+    Component: AppLayout,
     children: [
       {
         path: "dashboard",
