@@ -1,59 +1,82 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// Importação dos Schemas
+import { loginSchema, forgotSchema, resetSchema } from "../../schemas/authSchema";
+
 import "./Login.css";
 
-// Importações de Imagens (Isso garante que elas vão aparecer!)
+// Importações de Imagens
 import logoImage from "../../assets/logo.png";
 import redElement from "../../assets/red_element.png";
 import greenElement from "../../assets/green_element.png";
-import fruitBackground from "../../assets/fruit_background.png"; // O fundo de frutinhas!
+import fruitBackground from "../../assets/fruit_background.png";
 
 export default function Login() {
   const navigate = useNavigate();
   const [view, setView] = useState("login");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+
+  // Estados de UI (Visibilidade de Senhas)
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loginErrors, setLoginErrors] = useState({});
-  const [novaSenha, setNovaSenha] = useState("");
-  const [confirmaSenha, setConfirmaSenha] = useState("");
-  const [resetErrors, setResetErrors] = useState(null);
 
-  // Novos estados para controlar a tela de Esqueci a Senha
-  const [forgotEmail, setForgotEmail] = useState("");
-  const [forgotError, setForgotError] = useState("");
+  // --- FORMULÁRIO DE LOGIN ---
+  const {
+    register: regLogin,
+    handleSubmit: handleLoginSubmit,
+    formState: { errors: loginErrors },
+  } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const erros = {};
-    if (!email) erros.email = "Campo Obrigatório";
-    else if (!email.includes("@")) erros.email = "Formato de email inválido";
-    if (!senha) erros.senha = "Campo Obrigatório";
-
+  // --- FORMULÁRIO ESQUECI A SENHA ---
+  const {
+    register: regForgot,
+    handleSubmit: handleForgotSubmit,
+    formState: { errors: forgotErrors },
+  } = useForm({ resolver: zodResolver(forgotSchema) });
+  
+    // eslint-disable-next-line no-undef
     if (Object.keys(erros).length > 0) {
+      // eslint-disable-next-line no-undef
       setLoginErrors(erros);
     } else {
       localStorage.setItem("usuario_logado", "true");
-      navigate("/");
+      navigate("/home");
     }
+
+  // --- FORMULÁRIO RESET DE SENHA ---
+  const {
+    register: regReset,
+    handleSubmit: handleResetSubmit,
+    watch,
+    formState: { errors: resetErrors },
+  } = useForm({ resolver: zodResolver(resetSchema) });
+
+  // Monitoramento da nova senha para as regras visuais (Checklist)
+  const novaSenhaValue = watch("novaSenha", "");
+  const tem8Char = novaSenhaValue.length >= 8;
+  const temNumero = /\d/.test(novaSenhaValue);
+  const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(novaSenhaValue);
+
+  // Handlers de Submissão
+  const onLogin = (data) => {
+    console.log("Login enviado:", data);
+    localStorage.setItem("usuario_logado", "true");
+    navigate("/");
   };
 
-  // Nova função para validar o botão "Enviar Link" sem usar o balão do Chrome
-  const handleForgotSubmit = (e) => {
-    e.preventDefault();
-    if (!forgotEmail) {
-      setForgotError("Insira um email válido!");
-    } else if (!forgotEmail.includes("@")) {
-      setForgotError("Formato de email inválido!");
-    } else {
-      setForgotError(""); // Limpa o erro
-      setView("forgot-success"); // Vai pra tela de sucesso
-    }
+  const onForgot = (data) => {
+    console.log("Email para recuperação:", data);
+    setView("forgot-success");
   };
 
-  // O conteúdo central (formulário, ícones, textos de erro)
+  const onReset = (data) => {
+    console.log("Senha resetada com sucesso:", data);
+    setView("login");
+  };
+
   const renderRightSideContent = () => {
     switch (view) {
       case "login":
@@ -63,130 +86,47 @@ export default function Login() {
               <h1>NUTRIF-TAUÁ</h1>
               <p>Boas Vindas!</p>
             </div>
-
-            <form className="login-form" onSubmit={handleLogin}>
+            <form className="login-form" onSubmit={handleLoginSubmit(onLogin)}>
               <div className="form-group">
-                <label
-                  className={
-                    loginErrors.email || loginErrors.ambos ? "error-label" : ""
-                  }
-                >
-                  Email
-                </label>
+                <label className={loginErrors.email ? "error-label" : ""}>Email</label>
                 <div className="input-wrapper">
                   <input
+                    {...regLogin("email")}
                     type="text"
                     placeholder="Digite seu email Institucional"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      setLoginErrors({ ...loginErrors, email: "", ambos: "" });
-                    }}
-                    className={
-                      loginErrors.email || loginErrors.ambos
-                        ? "error-input"
-                        : ""
-                    }
+                    className={loginErrors.email ? "error-input" : ""}
                   />
                 </div>
-                {loginErrors.email && (
-                  <span className="error-msg">{loginErrors.email}</span>
-                )}
+                {loginErrors.email && <span className="error-msg">{loginErrors.email.message}</span>}
               </div>
 
               <div className="form-group">
-                <label
-                  className={
-                    loginErrors.senha || loginErrors.ambos ? "error-label" : ""
-                  }
-                >
-                  Senha
-                </label>
+                <label className={loginErrors.senha ? "error-label" : ""}>Senha</label>
                 <div className="input-wrapper">
                   <input
+                    {...regLogin("senha")}
                     type={showPassword ? "text" : "password"}
                     placeholder="Digite sua senha"
-                    value={senha}
-                    onChange={(e) => {
-                      setSenha(e.target.value);
-                      setLoginErrors({ ...loginErrors, senha: "", ambos: "" });
-                    }}
-                    className={
-                      loginErrors.senha || loginErrors.ambos
-                        ? "error-input"
-                        : ""
-                    }
+                    className={loginErrors.senha ? "error-input" : ""}
                   />
                   <i
                     className={`ph-bold ${showPassword ? "ph-eye-slash" : "ph-eye"} eye-icon`}
                     onClick={() => setShowPassword(!showPassword)}
                   ></i>
                 </div>
-                {loginErrors.senha && (
-                  <span className="error-msg">{loginErrors.senha}</span>
-                )}
-                {loginErrors.ambos && (
-                  <span
-                    className="error-msg"
-                    style={{ marginTop: "5px", textAlign: "center" }}
-                  >
-                    {loginErrors.ambos}
-                  </span>
-                )}
+                {loginErrors.senha && <span className="error-msg">{loginErrors.senha.message}</span>}
               </div>
 
               <div className="form-options">
                 <label className="checkbox-group">
                   <input type="checkbox" /> Lembre de mim
                 </label>
-                <span
-                  className="link-esqueceu"
-                  onClick={() => {
-                    setView("forgot");
-                    setForgotError(""); // Limpa erro ao entrar na tela
-                    setForgotEmail(""); // Limpa o campo ao entrar na tela
-                  }}
-                >
+                <span className="link-esqueceu" onClick={() => setView("forgot")}>
                   Esqueceu a senha?
                 </span>
               </div>
-
-              <button type="submit" className="btn-submit">
-                Entrar
-              </button>
+              <button type="submit" className="btn-submit">Entrar</button>
             </form>
-          </div>
-        );
-
-      case "error-blocked":
-        return (
-          <div className="content-section-standard">
-            <div className="alert-center-screen">
-              <i className="ph-light ph-warning icon-central red"></i>
-              <h2>
-                Conta temporariamente
-                <br />
-                bloqueada
-              </h2>
-              <p>Tente novamente em 15 segundos</p>
-            </div>
-          </div>
-        );
-
-      case "error-inactive":
-        return (
-          <div className="content-section-standard">
-            <div className="alert-center-screen">
-              <i className="ph-light ph-warning icon-central red"></i>
-              <h2>Sua conta está inativa!</h2>
-              <p>A conta precisa ser ativada por um administrador.</p>
-              <p style={{ fontSize: "0.8rem" }}>
-                Email:{" "}
-                <a href="mailto:suporte.refeitorio@ifce.edu.br">
-                  suporte.refeitorio@ifce.edu.br
-                </a>
-              </p>
-            </div>
           </div>
         );
 
@@ -195,68 +135,25 @@ export default function Login() {
           <div className="content-section-standard">
             <div className="alert-center-screen">
               <i className="ph-bold ph-envelope-simple icon-central"></i>
-              <h2 style={{ margin: "0 0 5px 0" }}>Esqueceu a senha?</h2>
-              <p style={{ marginBottom: "40px", fontSize: "0.85rem" }}>
-                Insira seu email para receber um link
-                <br />
-                para redefinir a senha.
-              </p>
-
-              {/* O formulário agora chama a nossa função personalizada */}
-              <form className="login-form" onSubmit={handleForgotSubmit}>
+              <h2>Esqueceu a senha?</h2>
+              <p>Insira seu email para receber um link de redefinição.</p>
+              <form className="login-form" onSubmit={handleForgotSubmit(onForgot)}>
                 <div className="form-group">
-                  <label className={forgotError ? "error-label" : ""}>
-                    Email
-                  </label>
                   <div className="input-wrapper">
-                    <i
-                      className="ph-bold ph-envelope-simple"
-                      style={{
-                        position: "absolute",
-                        left: "15px",
-                        color: forgotError ? "#ef4444" : "#cbd5e1", // Ícone fica vermelho também!
-                      }}
-                    ></i>
-                    {/* Removido o 'required' para usar a nossa validação React */}
+                    <i className="ph-bold ph-envelope-simple" style={{ position: "absolute", left: "15px", color: forgotErrors.forgotEmail ? "#ef4444" : "#cbd5e1" }}></i>
                     <input
+                      {...regForgot("forgotEmail")}
                       type="text"
                       placeholder="example@gmail.com"
-                      value={forgotEmail}
-                      onChange={(e) => {
-                        setForgotEmail(e.target.value);
-                        setForgotError(""); // Some o erro quando o usuário digita
-                      }}
                       style={{ paddingLeft: "45px" }}
-                      className={forgotError ? "error-input" : ""}
+                      className={forgotErrors.forgotEmail ? "error-input" : ""}
                     />
                   </div>
-                  {/* Mensagem de erro vermelha em baixo do input */}
-                  {forgotError && (
-                    <span className="error-msg">{forgotError}</span>
-                  )}
+                  {forgotErrors.forgotEmail && <span className="error-msg">{forgotErrors.forgotEmail.message}</span>}
                 </div>
-                <button
-                  type="submit"
-                  className="btn-submit blue"
-                  style={{ marginTop: "10px" }}
-                >
-                  Enviar Link
-                </button>
-                <p
-                  style={{
-                    textAlign: "center",
-                    marginTop: "15px",
-                    fontSize: "0.75rem",
-                    color: "#64748b",
-                  }}
-                >
-                  Lembrou da senha?{" "}
-                  <span
-                    className="link-esqueceu"
-                    onClick={() => setView("login")}
-                  >
-                    Faça Login!
-                  </span>
+                <button type="submit" className="btn-submit blue">Enviar Link</button>
+                <p className="mt-4 text-center text-xs text-slate-500">
+                  Lembrou da senha? <span className="link-esqueceu" onClick={() => setView("login")}>Faça Login!</span>
                 </p>
               </form>
             </div>
@@ -267,139 +164,67 @@ export default function Login() {
         return (
           <div className="content-section-standard">
             <div className="alert-center-screen">
-              <i
-                className="ph-bold ph-check-circle icon-central"
-                style={{ color: "#22c55e" }}
-              ></i>
-              <p style={{ fontWeight: "600", color: "#333" }}>
-                Se o email estiver cadastrado, enviaremos
-                <br />
-                instruções para redefinir a sua senha.
-              </p>
+              <i className="ph-bold ph-check-circle icon-central" style={{ color: "#22c55e" }}></i>
+              <p>Se o email estiver cadastrado, você receberá as instruções em instantes.</p>
+              <button className="btn-submit blue mt-4" onClick={() => setView("login")}>Voltar ao Login</button>
             </div>
           </div>
         );
 
+<<<<<<< HEAD
       case "reset": {
         const tem8Char = novaSenha.length >= 8;
         const temNumero = /\d/.test(novaSenha);
         const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(novaSenha);
 
+=======
+      case "reset":
+>>>>>>> 082c8c0674fb87707898ae548eded2fc96bedf5d
         return (
           <div className="content-section-standard">
             <div className="alert-center-screen">
               <i className="ph-light ph-key icon-central"></i>
-              <h2 style={{ margin: "0 0 5px 0" }}>Redefina sua senha</h2>
-              <p style={{ marginBottom: "30px", fontSize: "0.8rem" }}>
-                Defina sua nova senha de acesso.
-              </p>
-              <form
-                className="login-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setResetErrors(
-                    "A nova senha deverá ser diferente da anterior.",
-                  );
-                }}
-              >
+              <h2>Redefina sua senha</h2>
+              <form className="login-form" onSubmit={handleResetSubmit(onReset)}>
                 <div className="form-group">
-                  <label className={resetErrors ? "error-label" : ""}>
-                    Nova senha <span style={{ color: "#ef4444" }}>*</span>
-                  </label>
+                  <label className={resetErrors.novaSenha ? "error-label" : ""}>Nova senha *</label>
                   <div className="input-wrapper">
-                    <i
-                      className="ph-bold ph-lock-key"
-                      style={{
-                        position: "absolute",
-                        left: "15px",
-                        color: "#cbd5e1",
-                      }}
-                    ></i>
                     <input
+                      {...regReset("novaSenha")}
                       type={showNewPassword ? "text" : "password"}
                       placeholder="********"
-                      value={novaSenha}
-                      onChange={(e) => setNovaSenha(e.target.value)}
-                      style={{ paddingLeft: "45px" }}
-                      className={resetErrors ? "error-input" : ""}
+                      className={resetErrors.novaSenha ? "error-input" : ""}
                     />
-                    <i
-                      className={`ph-bold ${showNewPassword ? "ph-eye-slash" : "ph-eye"} eye-icon`}
-                      onClick={() => setShowNewPassword(!showNewPassword)}
-                    ></i>
+                    <i className={`ph-bold ${showNewPassword ? "ph-eye-slash" : "ph-eye"} eye-icon`} onClick={() => setShowNewPassword(!showNewPassword)}></i>
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label className={resetErrors ? "error-label" : ""}>
-                    Confirme sua nova senha{" "}
-                    <span style={{ color: "#ef4444" }}>*</span>
-                  </label>
+                  <label className={resetErrors.confirmaSenha ? "error-label" : ""}>Confirme sua senha *</label>
                   <div className="input-wrapper">
-                    <i
-                      className="ph-bold ph-lock-key"
-                      style={{
-                        position: "absolute",
-                        left: "15px",
-                        color: "#cbd5e1",
-                      }}
-                    ></i>
                     <input
+                      {...regReset("confirmaSenha")}
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="********"
-                      value={confirmaSenha}
-                      onChange={(e) => setConfirmaSenha(e.target.value)}
-                      style={{ paddingLeft: "45px" }}
-                      className={resetErrors ? "error-input" : ""}
+                      className={resetErrors.confirmaSenha ? "error-input" : ""}
                     />
-                    <i
-                      className={`ph-bold ${showConfirmPassword ? "ph-eye-slash" : "ph-eye"} eye-icon`}
-                      onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                      }
-                    ></i>
+                    <i className={`ph-bold ${showConfirmPassword ? "ph-eye-slash" : "ph-eye"} eye-icon`} onClick={() => setShowConfirmPassword(!showConfirmPassword)}></i>
                   </div>
-                  {resetErrors && (
-                    <span className="error-msg">{resetErrors}</span>
-                  )}
+                  {resetErrors.confirmaSenha && <span className="error-msg">{resetErrors.confirmaSenha.message}</span>}
                 </div>
 
-                {!resetErrors && (
-                  <ul className="password-rules">
-                    <li
-                      className={`rule-item ${tem8Char ? "valid" : "invalid"}`}
-                    >
-                      <i
-                        className={`ph-bold ${tem8Char ? "ph-check" : "ph-x"}`}
-                      ></i>{" "}
-                      Mínimo 8 caracteres
-                    </li>
-                    <li
-                      className={`rule-item ${temNumero ? "valid" : "invalid"}`}
-                    >
-                      <i
-                        className={`ph-bold ${temNumero ? "ph-check" : "ph-x"}`}
-                      ></i>{" "}
-                      Contém pelo menos 1 número
-                    </li>
-                    <li
-                      className={`rule-item ${temEspecial ? "valid" : "invalid"}`}
-                    >
-                      <i
-                        className={`ph-bold ${temEspecial ? "ph-check" : "ph-x"}`}
-                      ></i>{" "}
-                      Contém pelo menos 1 caractere especial
-                    </li>
-                  </ul>
-                )}
-
-                <button
-                  type="submit"
-                  className="btn-submit blue"
-                  style={{ marginTop: "10px" }}
-                >
-                  Concluir
-                </button>
+                <ul className="password-rules">
+                  <li className={`rule-item ${tem8Char ? "valid" : "invalid"}`}>
+                    <i className={`ph-bold ${tem8Char ? "ph-check" : "ph-x"}`}></i> Mínimo 8 caracteres
+                  </li>
+                  <li className={`rule-item ${temNumero ? "valid" : "invalid"}`}>
+                    <i className={`ph-bold ${temNumero ? "ph-check" : "ph-x"}`}></i> Pelo menos 1 número
+                  </li>
+                  <li className={`rule-item ${temEspecial ? "valid" : "invalid"}`}>
+                    <i className={`ph-bold ${temEspecial ? "ph-check" : "ph-x"}`}></i> Pelo menos 1 especial
+                  </li>
+                </ul>
+                <button type="submit" className="btn-submit blue">Concluir</button>
               </form>
             </div>
           </div>
@@ -414,46 +239,19 @@ export default function Login() {
   return (
     <div className="login-page-wrapper">
       <div className="login-main-card">
-        {/* =========================================
-            LADO ESQUERDO: Fundo de Frutas + Ilustração Maior 
-            ========================================= */}
         <div className="login-left-side">
-          {/* O fundo de frutinhas colocado diretamente na tela (agora é garantido) */}
           <img src={fruitBackground} alt="Fundo" className="bg-frutas" />
-
-          {/* Aquele detalhe verde no canto */}
-          <img
-            src={greenElement}
-            alt="Detalhe Verde"
-            className="decor-green-icon"
-          />
-
-          {/* O cara do celular gigante */}
+          <img src={greenElement} alt="Detalhe Verde" className="decor-green-icon" />
           <img src={logoImage} alt="Ilustração" className="illustration-main" />
         </div>
 
-        {/* =========================================
-            LADO DIREITO: Botão Fixo + Onda Maior 
-            ========================================= */}
         <div className="login-right-side">
-          <img
-            src={redElement}
-            alt="Detalhe Vermelho"
-            className="decor-red-top"
-          />
-
-          {/* O botão VOLTAR está aqui fora do conteúdo. Ficará fixo no topo esquerdo! */}
+          <img src={redElement} alt="Detalhe Vermelho" className="decor-red-top" />
           {view !== "login" && (
-            <button
-              type="button"
-              className="btn-voltar-login"
-              onClick={() => setView("login")}
-            >
+            <button type="button" className="btn-voltar-login" onClick={() => setView("login")}>
               <i className="ph-bold ph-caret-left"></i> Voltar
             </button>
           )}
-
-          {/* Só carrega o formulário do meio */}
           {renderRightSideContent()}
         </div>
       </div>
