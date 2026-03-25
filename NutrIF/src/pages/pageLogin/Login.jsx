@@ -37,6 +37,14 @@ export default function Login() {
     formState: { errors: forgotErrors },
   } = useForm({ resolver: zodResolver(forgotSchema) });
 
+<<<<<<< HEAD
+    if (Object.keys(erros).length > 0) {
+      setLoginErrors(erros);
+    } else {
+      localStorage.setItem("usuario_logado", "true");
+      navigate("/home");
+    }
+=======
   // --- FORMULÁRIO RESET DE SENHA ---
   const {
     register: regReset,
@@ -56,6 +64,7 @@ export default function Login() {
     console.log("Login enviado:", data);
     localStorage.setItem("usuario_logado", "true");
     navigate("/");
+>>>>>>> 7ef1f2eb9b15fa7ef8f70b09f43852dd9e34bac8
   };
 
   const onForgot = (data) => {
